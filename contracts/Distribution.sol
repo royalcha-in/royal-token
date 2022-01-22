@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.6;
+pragma solidity 0.8.11;
 
 // Using OpenZeppelin Implementation for security
 import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/utils/math/SafeMath.sol";
@@ -12,24 +12,24 @@ import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contr
     using SafeERC20 for IERC20;
 
     bool private repartitionDone = false;
-    uint256 private secondsOfDay = 86400;
+    uint256 private constant secondsOfDay = 86400;
     uint256 public startDate = getCurrentTime();
     
-    address public immutable preSaleAddress = 0xd7eb6B2814B2461196e868240e095a951C13f843; 
-    address public immutable exchangesAndLiquidtyAddress = 0x6cC5Fa8e39982CC8D7BAD053dDf359174aB6EB89; 
-    address public immutable referencesAndBonusesAddress = 0x3D07210f949Ffa1519DcE7e5b27fc0F68cee8B15;
-    address public immutable advertisingAndMarketingAddress = 0x237Ee27c074Ae57A9607be08aA86c1a94d1881cA;
-    address public immutable royalChainV2AndMetaverseAddress = 0xB1857941e3110E60AD45eD650968F8659f2f5F16;
-    address public immutable reserveAddress = 0x1f7CbEA7B064f327CE564f31bd5aCf88A785B2F0; 
-    address public immutable teamAndDevelopersAddress = 0xE3D2c0A452e7993efBc3512c25DC3cd2CCF08F90;
+    address public constant preSaleAddress = 0xd7eb6B2814B2461196e868240e095a951C13f843; 
+    address public constant exchangesAndLiquidityAddress = 0x6cC5Fa8e39982CC8D7BAD053dDf359174aB6EB89; 
+    address public constant referencesAndBonusesAddress = 0x3D07210f949Ffa1519DcE7e5b27fc0F68cee8B15;
+    address public constant advertisingAndMarketingAddress = 0x237Ee27c074Ae57A9607be08aA86c1a94d1881cA;
+    address public constant royalChainV2AndMetaverseAddress = 0xB1857941e3110E60AD45eD650968F8659f2f5F16;
+    address public constant reserveAddress = 0x1f7CbEA7B064f327CE564f31bd5aCf88A785B2F0; 
+    address public constant teamAndDevelopersAddress = 0xE3D2c0A452e7993efBc3512c25DC3cd2CCF08F90;
     
-    uint16 public immutable percentageOfPreSale = 5;
-    uint16 public immutable percentageOfExchangesAndLiquidty = 15;    
-    uint16 public immutable percentageOfReferencesAndBonuses = 5;
-    uint16 public immutable percentageOfAdvertisingAndMarketing = 20;
-    uint16 public immutable percentageOfRoyalChainV2AndMetaverse = 27;
-    uint16 public immutable percentageOfReserve = 13;
-    uint16 public immutable percentageOfTeamAndDevelopers = 15;
+    uint16 public constant percentageOfPreSale = 5;
+    uint16 public constant percentageOfExchangesAndLiquidity = 15;    
+    uint16 public constant percentageOfReferencesAndBonuses = 5;
+    uint16 public constant percentageOfAdvertisingAndMarketing = 20;
+    uint16 public constant percentageOfRoyalChainV2AndMetaverse = 27;
+    uint16 public constant percentageOfReserve = 13;
+    uint16 public constant percentageOfTeamAndDevelopers = 15;
 
     struct TimeLockSchedule{
         bool initialized;    // whether or not the vesting has been released
@@ -139,7 +139,7 @@ import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contr
     }
 
     /**
-     * @notice Creates vesting shcedules and distributes the supply.
+     * @notice Creates vesting shcedule and distributes the supply.
      */
     function repartition() public onlyOwner {
         require(repartitionDone != true, "Distribution: Repartition has already done!");
@@ -155,8 +155,8 @@ import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contr
         uint256 totalAmountOfReferencesAndBonuses = totalSupplyPercentageUnit.mul(percentageOfReferencesAndBonuses);
         _token.safeTransfer(referencesAndBonusesAddress, totalAmountOfReferencesAndBonuses);
 
-        uint256 totalAmountOfExchangesAndLiquidty = totalSupplyPercentageUnit.mul(percentageOfExchangesAndLiquidty);
-        _token.safeTransfer(exchangesAndLiquidtyAddress, totalAmountOfExchangesAndLiquidty);
+        uint256 totalAmountOfExchangesAndLiquidty = totalSupplyPercentageUnit.mul(percentageOfExchangesAndLiquidity);
+        _token.safeTransfer(exchangesAndLiquidityAddress, totalAmountOfExchangesAndLiquidty);
 
         uint256 totalAmountOfReserve = totalSupplyPercentageUnit.mul(percentageOfReserve);
         uint8 divisionMonthOfReserve = 2;
@@ -205,6 +205,8 @@ import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contr
             "RoyalChainV2AndMetaverse",
             totalAmountOfRoyalChainV2AndMetaverse
         );
+
+        repartitionDone = true;
     }
 
     /**
