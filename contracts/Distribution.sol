@@ -15,13 +15,13 @@ import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contr
     uint256 private constant secondsOfDay = 86400;
     uint256 public startDate = getCurrentTime();
     
-    address public constant preSaleAddress = 0xd7eb6B2814B2461196e868240e095a951C13f843; 
-    address public constant exchangesAndLiquidityAddress = 0x6cC5Fa8e39982CC8D7BAD053dDf359174aB6EB89; 
-    address public constant referencesAndBonusesAddress = 0x3D07210f949Ffa1519DcE7e5b27fc0F68cee8B15;
-    address public constant advertisingAndMarketingAddress = 0x237Ee27c074Ae57A9607be08aA86c1a94d1881cA;
-    address public constant royalChainV2AndMetaverseAddress = 0xB1857941e3110E60AD45eD650968F8659f2f5F16;
-    address public constant reserveAddress = 0x1f7CbEA7B064f327CE564f31bd5aCf88A785B2F0; 
-    address public constant teamAndDevelopersAddress = 0xE3D2c0A452e7993efBc3512c25DC3cd2CCF08F90;
+    address public constant preSaleAddress = 0x146b77b050a9985922e980E62925F4c56E2b848A; 
+    address public constant exchangesAndLiquidityAddress = 0x8D02034E502E2d21DAe0c4ac5e609954b6c12A9e; 
+    address public constant referencesAndBonusesAddress = 0x05B4aed6dfc2c10d672594634AcA625F64e6D7AA;
+    address public constant advertisingAndMarketingAddress = 0x46196b46BAAaF581915d8F946F3F1BE5F507F531;
+    address public constant royalChainV2AndMetaverseAddress = 0xf363Ab85380080fc0E7b570110A4F826370A3b47;
+    address public constant reserveAddress = 0xF8F3d482906D9c6c9b95a76d1d933Fb9F1fBd91d; 
+    address public constant teamAndDevelopersAddress = 0x2a55B878dc3Bf97CbF294417a325a64F86287B8a;
     
     uint16 public constant percentageOfPreSale = 5;
     uint16 public constant percentageOfExchangesAndLiquidity = 15;    
