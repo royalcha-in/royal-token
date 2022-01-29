@@ -17,12 +17,12 @@ contract RoyalToken is ERC20, ERC20Burnable, Ownable {
 
     /**
      * @notice Sets the distribution contract.
-     * @param _address address of the Distribution contract
+     * @param address_ address of the Distribution contract
      */
-    function setDistributionContract(address _address) public onlyOwner {
-        require(_address != address(0), "RoyalToken: Distribution contract address cannot be empty!"); 
+    function setDistribution(address address_) public onlyOwner {
+        require(address_ != address(0), "RoyalToken: Distribution contract address cannot be empty!"); 
         require(distributionContract == address(0), "RoyalToken: Distribution contract address has already been set!");
-        distributionContract = _address;
-        _mint(_address, 2 * (10**11) * (10 ** uint256(decimals())));
+        distributionContract = address_;
+        _mint(address_, 2 * (10**11) * (10 ** uint256(decimals())));
     }
 }
