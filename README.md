@@ -1,6 +1,6 @@
 # Royal Token
 
-An ERC20 utility token for Royal Chain. The project includes token and distribution contracts.
+An ERC-20 utility token for Royal Chain. The project includes ROYAL token contract.
 
 ## License
 
